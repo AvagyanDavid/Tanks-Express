@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-    <h1><%= title %></h1>
-    <img src="<%= picture %>" alt="" />
-    <h4>Добро пожаловать в гайд по классам тезники, здесь будет описано какие роли у классов и что от них требует команда <%= desc %></h4>
-</body>
-</html>
+<% layout('./layout/page.ejs') %>
+<h1><%= title %></h1>
+<img src="<%= picture %>" alt="" />
+<h4>Добро пожаловать в гайд по классам тезники, здесь будет описано какие роли у классов и что от них требует команда <%= desc %></h4>
