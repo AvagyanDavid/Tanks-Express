@@ -6,17 +6,31 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'World of Tanks' });
 });
 
+/* Тяжелые танки */
 router.get('/heavy_tank', function(req, res, next) {
-  res.send("<h1>Страница Тяжелые танки </h1>");
+  res.render('tank', {
+    title: "Тяжелые танки",
+    picture: "images/ИС_3.jpg",
+    desc: "Самый бронированный класс техники"
+  });
 });
 
+/* Средние танки */
 router.get('/average_tank', function(req, res, next) {
-  res.send("<h1>Страница Средние танки </h1>");
+  res.render('tank', {
+    title: "Средние танки",
+    picture: "images/Т-34-85.jpg",
+    desc: "Многофункциональный класс техники"
+  });
 });
 
+/* ПТ */
 router.get('/pt', function(req, res, next) {
-  res.send("<h1>Страница ПТ </h1>");
+  res.render('tank', {
+    title: "ПТ",
+    picture: "images/Grille.jpg",
+    desc: "Орудие у данного класса техники самое пробивное"
+  });
 });
-
 
 module.exports = router;
