@@ -10,10 +10,11 @@ var database = client.db("guide_tanks");
 database.dropDatabase()
 database = client.db("guide_tanks");
 const tanks = database.collection("tanks");
-const result = await tanks.insertOne({name:"ТТ"});
-console.log(`${result} documents were inserted`);
+const result = await tanks.insertMany(data);
+console.log(`${result.insertedCount} documents were inserted`);
 } finally {
 await client.close();
 }
 }
 run()
+
