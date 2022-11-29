@@ -5,11 +5,11 @@ const client = new MongoClient(uri)
 async function run() {
 try {
 await client.connect();
-var database = client.db("guide:tanks");
+var database = client.db("guide_tanks");
 database.dropDatabase()
-database = client.db("guide:tanks");
+database = client.db("guide_tanks");
 const tanks = database.collection("tanks");
-const result = await cats.insertOne({name:"ТТ"});
+const result = await tanks.insertOne({name:"ТТ"});
 console.log(`${result} documents were inserted`);
 } finally {
 await client.close();
