@@ -1,13 +1,15 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/test')
+mongoose.connect('mongodb://127.0.0.1/test');
 
-var Cat = mongoose.model('Cat', { name: String })
+var schema = mongoose.Schema({ name: String })
 
-var kitty = new Cat({ name: 'Пушок' })
-kitty.save(function (err) {
-    if (err) {
-        console.log(err)
-    } else {
-        console.log('Мяу')
-    }
+schema.methods.fire = function(){
+    console.log(this.get("name") + " бронированный класс техники")
+}
+
+var Tanks = mongoose.model('Tanks', schema)
+
+var Tanks = new Tanks({ name: 'TT' })
+Tanks.save(function (err) {
+    Tanks.fire()
 })
