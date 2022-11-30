@@ -1,15 +1,13 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/test');
+mongoose.connect('mongodb://127.0.0.1/test')
+var Tanks = require("./models/tanks/tank").Tanks
 
-var schema = mongoose.Schema({ name: String })
+var tanks = new Tanks({
+    title: "TT",
+    nick: "TT"
+})
 
-schema.methods.fire = function(){
-    console.log(this.get("name") + " бронированный класс техники")
-}
-
-var Tanks = mongoose.model('Tanks', schema)
-
-var Tanks = new Tanks({ name: 'TT' })
-Tanks.save(function (err) {
-    Tanks.fire()
+console.log(tanks)
+tanks.save(function(){
+    console.log(tanks.title)
 })
