@@ -1,13 +1,13 @@
 var mongoose = require('mongoose')
-mongoose.connect('mongodb://127.0.0.1/test')
-var Tanks = require("./models/tanks/tank").Tanks
+mongoose.connect('mongodb:/127.0.0.1:27017/test')
+var Tanks = require("./models/tank/tank").Tank
 
-var tanks = new Tanks({
+var tank = new Tank({
     title: "TT",
     nick: "TT"
 })
 
-console.log(tanks)
+console.log(tank)
 tanks.save(function(){
-    console.log(tanks.title)
+    console.log(tank.title)
 })

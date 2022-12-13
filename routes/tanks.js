@@ -1,5 +1,5 @@
 var express = require('express');
-const { Tanks } = require('../models/tanks/tank').Tanks;
+var Tank = require('../models/tanks/tank').Tank;
 var router = express.Router();
 
 
@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 /* Страница классов */
 router.get("/:nick", function(req, res, next) {
-    Tanks.findOne({nick:req.params.nick}, function(err,tank){
+    Tank.findOne({nick:req.params.nick}, function(err,tank){
         if(err) return next(err)
         if(!tank) return next(new Error("Нет такого класса в игре"))
     res.render('tank', {
