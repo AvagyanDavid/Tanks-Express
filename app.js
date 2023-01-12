@@ -6,6 +6,7 @@ var logger = require('morgan');
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://127.0.0.1:27017/guide_tanks')
 var session = require('express-session')
+var MongoStore = require('connect-mongo');(session);
 
 
 var indexRouter = require('./routes/index');
@@ -27,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session (
   {
-      secret: "ApexLegends",
+      secret: "guide_tanks",
       cookie: {maxAge: 60 * 1000},
       resave: true,
       saveUninitialized: true
