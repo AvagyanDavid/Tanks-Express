@@ -22,9 +22,15 @@
                     <a class="nav-link" href="/tanks/<%=tank.nick%>"><%=tank.title%></a>
                     </li>                 
                 <% })} %>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logreg">Войти</a>
+                <% if(user) { %>
+                    <form action=" /logout" method="post">
+                        <button type="submit" class="btn btn-link">Выйти</button>
+            </li>
+                <% } else { %>
+                    <li class="nav-item">
+                    <a class="nav-link active" href="/logreg">Войти</a>
                 </li>
+                <% } %>
             </ul>
         </div>      
     </nav>
