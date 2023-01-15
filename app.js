@@ -7,6 +7,7 @@ var mongoose = require('mongoose')
 mongoose.connect('mongodb://127.0.0.1:27017/guide_tanks')
 var session = require('express-session')
 var MongoStore = require('connect-mongo');(session);
+var Tank = require("./models/tanks/tank").Tank
 
 
 var indexRouter = require('./routes/index');
@@ -40,6 +41,18 @@ app.use(function(req,res,next){
     next()
 })
 
+app.use(function(req,res,next){
+  res.locals.nav = []
+
+  Tank.find(null,{_id:0,title:1,nick:1},function(err,result){
+      if(err) throw err
+      res.locals.nav = result
+      next()
+  })
+})
+
+//app.use(require("./middleware/createMenu"))
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/tanks', tanksRouter);
@@ -57,7 +70,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error',{title:'error', menu:[]});
+  res.render('error',{title:'error'});
 });
 
 module.exports = app;
