@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Tank = require('../models/tanks/tank').Tank;
+var checkAuth = require("../middleware/checkAuth.js")
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -8,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 /* Страница классов */
-router.get("/:nick", function(req, res, next){
+router.get("/:nick",checkAuth, function(req, res, next){
     Tank.findOne({nick:req.params.nick}, function(err,tank){
         if(err) return next(err)
         if(!tank) return next(new Error("Нет такого класса в игре"))

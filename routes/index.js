@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var checkAuth = require("../middleware/checkAuth.js")
 var Tank = require("../models/tanks/tank").Tank
 var User = require("./../models/tanks/user").User
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
